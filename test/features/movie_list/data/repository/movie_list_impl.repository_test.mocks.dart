@@ -32,7 +32,6 @@ class MockMovieListDataSource extends _i1.Mock
           Invocation.method(#getPopularMovies, []),
           returnValue: Future<List<_i4.MovieEntity>>.value(<_i4.MovieEntity>[]))
       as _i3.Future<List<_i4.MovieEntity>>);
-
   @override
   String toString() => super.toString();
 }

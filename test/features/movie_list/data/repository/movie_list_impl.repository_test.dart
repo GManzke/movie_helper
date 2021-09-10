@@ -10,6 +10,7 @@ import 'package:movie_helper/features/movie_list/data/datasource/movie_list.data
 import 'package:movie_helper/features/movie_list/data/model/genre.model.dart';
 import 'package:movie_helper/features/movie_list/data/model/movie.model.dart';
 import 'package:movie_helper/features/movie_list/data/repository/movie_list_impl.repository.dart';
+import 'package:movie_helper/features/movie_list/domain/entities/movie.entity.dart';
 
 import 'movie_list_impl.repository_test.mocks.dart';
 
@@ -25,7 +26,7 @@ main() {
 
   group('getPopularMovies', () {
     test('Should return Right with List of Movies', () async {
-      final movieList = [
+      final movieModelList = [
         const MovieModel(
             genres: [GenreModel(name: 'Horror', id: 1)],
             voteAverage: 10.0,
@@ -39,13 +40,15 @@ main() {
             title: 'Halloween (2018)',
             id: 666)
       ];
+      final List<MovieEntity> movieEntityList = movieModelList;
 
-      when(dataSource.getPopularMovies()).thenAnswer((_) async => movieList);
+      when(dataSource.getPopularMovies())
+          .thenAnswer((_) async => movieModelList);
 
       final res = await movieListRepositoryImpl.getPopularMovies();
 
       verify(dataSource.getPopularMovies()).called(1);
-      expect(res, equals(Right(movieList)));
+      expect(res, equals(Right(movieEntityList)));
     });
 
     test('Should return Left with connection Failure', () async {
