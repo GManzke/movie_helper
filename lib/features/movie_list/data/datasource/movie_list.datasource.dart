@@ -1,7 +1,7 @@
-import 'package:movie_helper/core/base.api.abstract.dart';
+import 'package:movie_helper/core/api/base.api.abstract.dart';
 import 'package:movie_helper/features/movie_list/domain/entities/movie.entity.dart';
 
-import 'model/movie.model.dart';
+import '../model/movie.model.dart';
 
 abstract class MovieListDataSource {
   Future<List<MovieEntity>> getPopularMovies();

@@ -1,10 +1,10 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
-import 'package:movie_helper/core/base.api.abstract.dart';
-import 'package:movie_helper/features/movie_list/data/movie_list.datasource.dart';
+import 'package:movie_helper/core/api/base.api.abstract.dart';
+import 'package:movie_helper/features/movie_list/data/datasource/movie_list.datasource.dart';
 
-import 'json/movie_responses.dart';
+import '../json/movie_responses.dart';
 import 'movie_list.datasource_test.mocks.dart';
 
 @GenerateMocks([BaseApi])
@@ -28,7 +28,7 @@ main() {
       expect(res.isNotEmpty, isTrue);
     });
 
-    test('Should return a List of Movies from API', () async {
+    test('Should throw exception', () async {
       when(api.get(MovieListDataSourceImpl.kPopularMoviesPath))
           .thenThrow(Exception());
 
