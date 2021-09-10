@@ -6,22 +6,22 @@ import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:movie_helper/core/api/exceptions.dart';
 import 'package:movie_helper/core/failures.dart';
-import 'package:movie_helper/features/movie_list/data/datasource/movie_list.datasource.dart';
-import 'package:movie_helper/features/movie_list/data/model/genre.model.dart';
-import 'package:movie_helper/features/movie_list/data/model/movie.model.dart';
-import 'package:movie_helper/features/movie_list/data/repository/movie_list_impl.repository.dart';
-import 'package:movie_helper/features/movie_list/domain/entities/movie.entity.dart';
+import 'package:movie_helper/features/discovery/data/datasource/discovery.datasource.dart';
+import 'package:movie_helper/features/discovery/data/model/genre.model.dart';
+import 'package:movie_helper/features/discovery/data/model/movie.model.dart';
+import 'package:movie_helper/features/discovery/data/repository/discovery_impl.repository.dart';
+import 'package:movie_helper/features/discovery/domain/entities/movie.entity.dart';
 
-import 'movie_list_impl.repository_test.mocks.dart';
+import 'discovery_impl.repository_test.mocks.dart';
 
-@GenerateMocks([MovieListDataSource])
+@GenerateMocks([DiscoveryDataSource])
 main() {
-  late MockMovieListDataSource dataSource;
-  late MovieListRepositoryImpl movieListRepositoryImpl;
+  late MockDiscoveryDataSource dataSource;
+  late DiscoveryRepositoryImpl discoveryRepositoryImpl;
 
   setUp(() {
-    dataSource = MockMovieListDataSource();
-    movieListRepositoryImpl = MovieListRepositoryImpl(dataSource);
+    dataSource = MockDiscoveryDataSource();
+    discoveryRepositoryImpl = DiscoveryRepositoryImpl(dataSource);
   });
 
   group('getPopularMovies', () {
@@ -45,7 +45,7 @@ main() {
       when(dataSource.getPopularMovies())
           .thenAnswer((_) async => movieModelList);
 
-      final res = await movieListRepositoryImpl.getPopularMovies();
+      final res = await discoveryRepositoryImpl.getPopularMovies();
 
       verify(dataSource.getPopularMovies()).called(1);
       expect(res, equals(Right(movieEntityList)));
@@ -54,7 +54,7 @@ main() {
     test('Should return Left with connection Failure', () async {
       when(dataSource.getPopularMovies()).thenThrow(TimeoutException(''));
 
-      final res = await movieListRepositoryImpl.getPopularMovies();
+      final res = await discoveryRepositoryImpl.getPopularMovies();
 
       verify(dataSource.getPopularMovies()).called(1);
       expect(res, equals(const Left(kNoConnectionFailure)));
@@ -63,7 +63,7 @@ main() {
     test('Should return Left with not found Failure', () async {
       when(dataSource.getPopularMovies()).thenThrow(NotFoundException());
 
-      final res = await movieListRepositoryImpl.getPopularMovies();
+      final res = await discoveryRepositoryImpl.getPopularMovies();
 
       verify(dataSource.getPopularMovies()).called(1);
       expect(res, equals(const Left(kNotFoundFailure)));
@@ -72,7 +72,7 @@ main() {
     test('Should return Left with generic Failure', () async {
       when(dataSource.getPopularMovies()).thenThrow(Exception());
 
-      final res = await movieListRepositoryImpl.getPopularMovies();
+      final res = await discoveryRepositoryImpl.getPopularMovies();
 
       verify(dataSource.getPopularMovies()).called(1);
       expect(res, equals(const Left(kGenericFailure)));

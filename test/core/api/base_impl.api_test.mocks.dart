@@ -2,6 +2,8 @@
 // in movie_helper/test/core/api/base_impl.api_test.dart.
 // Do not manually edit this file.
 
+// ignore_for_file: unnecessary_overrides, camel_case_types
+
 import 'dart:async' as _i5;
 import 'dart:convert' as _i6;
 import 'dart:typed_data' as _i7;

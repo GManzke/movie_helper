@@ -3,20 +3,20 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:movie_helper/core/failures.dart';
-import 'package:movie_helper/features/movie_list/domain/entities/genre.entity.dart';
-import 'package:movie_helper/features/movie_list/domain/entities/movie.entity.dart';
-import 'package:movie_helper/features/movie_list/domain/repository/movie_list.repository.dart';
-import 'package:movie_helper/features/movie_list/domain/usecase/get_popular_movies.usecase.dart';
+import 'package:movie_helper/features/discovery/domain/entities/genre.entity.dart';
+import 'package:movie_helper/features/discovery/domain/entities/movie.entity.dart';
+import 'package:movie_helper/features/discovery/domain/repository/discovery.repository.dart';
+import 'package:movie_helper/features/discovery/domain/usecase/get_popular_movies.usecase.dart';
 
 import 'get_popular_movies.usecase_test.mocks.dart';
 
-@GenerateMocks([MovieListRepository])
+@GenerateMocks([DiscoveryRepository])
 main() {
-  late MockMovieListRepository repository;
+  late MockDiscoveryRepository repository;
   late GetPopularMoviesUseCase getPopularMoviesUseCase;
 
   setUp(() {
-    repository = MockMovieListRepository();
+    repository = MockDiscoveryRepository();
     getPopularMoviesUseCase = GetPopularMoviesUseCase(repository);
   });
 

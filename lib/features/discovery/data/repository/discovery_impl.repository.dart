@@ -3,15 +3,15 @@ import 'dart:async';
 import 'package:dartz/dartz.dart';
 import 'package:movie_helper/core/api/exceptions.dart';
 import 'package:movie_helper/core/failures.dart';
-import 'package:movie_helper/features/movie_list/domain/entities/movie.entity.dart';
-import 'package:movie_helper/features/movie_list/domain/repository/movie_list.repository.dart';
+import 'package:movie_helper/features/discovery/domain/entities/movie.entity.dart';
+import 'package:movie_helper/features/discovery/domain/repository/discovery.repository.dart';
 
-import '../datasource/movie_list.datasource.dart';
+import '../datasource/discovery.datasource.dart';
 
-class MovieListRepositoryImpl implements MovieListRepository {
-  final MovieListDataSource _dataSource;
+class DiscoveryRepositoryImpl implements DiscoveryRepository {
+  final DiscoveryDataSource _dataSource;
 
-  MovieListRepositoryImpl(this._dataSource);
+  DiscoveryRepositoryImpl(this._dataSource);
 
   @override
   Future<Either<Failure, List<MovieEntity>>> getPopularMovies() async {

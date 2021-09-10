@@ -1,5 +1,5 @@
-import 'package:movie_helper/features/movie_list/data/model/genre.model.dart';
-import 'package:movie_helper/features/movie_list/domain/entities/movie.entity.dart';
+import 'package:movie_helper/features/discovery/data/model/genre.model.dart';
+import 'package:movie_helper/features/discovery/domain/entities/movie.entity.dart';
 
 class MovieModel extends MovieEntity {
   const MovieModel(

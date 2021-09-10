@@ -1,16 +1,15 @@
 import 'package:movie_helper/core/api/base.api.abstract.dart';
-import 'package:movie_helper/features/movie_list/domain/entities/movie.entity.dart';
 
 import '../model/movie.model.dart';
 
-abstract class MovieListDataSource {
-  Future<List<MovieEntity>> getPopularMovies();
+abstract class DiscoveryDataSource {
+  Future<List<MovieModel>> getPopularMovies();
 }
 
-class MovieListDataSourceImpl implements MovieListDataSource {
+class DiscoveryDataSourceImpl implements DiscoveryDataSource {
   final BaseApi _api;
 
-  MovieListDataSourceImpl(this._api);
+  DiscoveryDataSourceImpl(this._api);
 
   static const kPopularMoviesPath = '/movie/top_rated';
 
