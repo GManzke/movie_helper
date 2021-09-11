@@ -1,6 +1,6 @@
 import '../../../../utils.dart';
 
-const kFeaturePath = 'movie_list/data/json';
+const kFeaturePath = 'discovery/data/json';
 
 final popularMoviesSuccessResponse =
     readJsonFile('$kFeaturePath/popular_movies_success.response.json');

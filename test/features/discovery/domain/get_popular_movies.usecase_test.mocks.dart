@@ -2,6 +2,8 @@
 // in movie_helper/test/features/discovery/domain/get_popular_movies.usecase_test.dart.
 // Do not manually edit this file.
 
+// ignore_for_file: camel_case_types, unnecessary_overrides
+
 import 'dart:async' as _i4;
 
 import 'package:dartz/dartz.dart' as _i2;
