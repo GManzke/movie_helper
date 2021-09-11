@@ -11,7 +11,7 @@ class DiscoveryDataSourceImpl implements DiscoveryDataSource {
 
   DiscoveryDataSourceImpl(this._api);
 
-  static const kPopularMoviesPath = '/movie/top_rated';
+  static const kPopularMoviesPath = '/movie/popular';
 
   @override
   Future<List<MovieModel>> getPopularMovies() => _api

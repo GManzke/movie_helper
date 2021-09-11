@@ -18,15 +18,16 @@ class App extends StatelessWidget {
       initialRoute: kDiscoveryPage,
       routes: appRoutes,
       theme: ThemeData.dark().copyWith(
-          primaryColor: Colors.black,
+          scaffoldBackgroundColor: Colors.black,
+          appBarTheme: const AppBarTheme(backgroundColor: Colors.black),
           iconTheme: const IconThemeData(color: Colors.redAccent, size: 64),
           elevatedButtonTheme: ElevatedButtonThemeData(
               style: ElevatedButton.styleFrom(
                   padding: const EdgeInsets.all(8),
-                  primary: Colors.grey[800],
+                  primary: Colors.transparent,
                   shape: const CircleBorder())),
           textTheme: const TextTheme(
-            headline1: TextStyle(fontSize: 36.0, fontWeight: FontWeight.bold),
+            headline1: TextStyle(fontSize: 32.0, fontWeight: FontWeight.bold),
             headline2: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
           )),
     );

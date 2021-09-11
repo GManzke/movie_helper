@@ -26,7 +26,7 @@ abstract class BasePage<T extends Bloc<BaseBlocEvent, BaseBlocState>>
             : null,
         automaticallyImplyLeading: false,
         titleSpacing: kDefaultPadding,
-        toolbarHeight: 100,
+        toolbarHeight: MediaQuery.of(context).size.height * 0.1,
         elevation: 0,
       );
 

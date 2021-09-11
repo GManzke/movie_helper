@@ -21,7 +21,7 @@ class MovieModel extends MovieEntity {
       genres: List.from(json['genre_ids'])
           .map((id) => GenreModel(id: id, name: 'genre'))
           .toList(),
-      voteAverage: json['vote_average'],
+      voteAverage: json['vote_average'].toDouble(),
       posterPath: json['poster_path'],
       overview: json['overview'],
       title: json['title'],

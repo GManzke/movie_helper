@@ -16,8 +16,8 @@ class DiscoveryActionButtons extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        ActionButton.dismiss(onDismissPressed: onDismissPressed),
-        ActionButton.favorite(onDismissPressed: onDismissPressed),
+        ActionButton.dismiss(onPressed: onDismissPressed),
+        ActionButton.favorite(onPressed: onFavoritePressed),
       ],
     );
   }

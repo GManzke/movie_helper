@@ -70,6 +70,7 @@ class _DraggableMovieCardUiState extends State<DraggableMovieCardUi>
         child: MoviePosterUi(
           posterPath: widget.movie.posterPath,
           title: widget.movie.title,
+          height: widget.displaySize.width * 1.15,
         ),
       ),
     );

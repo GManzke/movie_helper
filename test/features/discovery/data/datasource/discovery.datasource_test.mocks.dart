@@ -2,8 +2,6 @@
 // in movie_helper/test/features/discovery/data/datasource/discovery.datasource_test.dart.
 // Do not manually edit this file.
 
-// ignore_for_file: camel_case_types, unnecessary_overrides
-
 import 'dart:async' as _i3;
 
 import 'package:mockito/mockito.dart' as _i1;

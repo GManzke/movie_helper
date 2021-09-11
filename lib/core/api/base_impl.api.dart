@@ -12,13 +12,16 @@ class BaseApiImpl implements BaseApi {
 
   BaseApiImpl(this._client, {this.timeOutMs = _kTimeOutMs});
 
+  static const _token =
+      'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjN2Y3YTFmMzk2ZGU2MTRjNDA3YzA3Mzg4MDJlN2I4ZiIsInN1YiI6IjYwNDNlNDVlMWE5MzRmMDA0NGZkMGQzYiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.FG_rBQHqbzIlvxje68mIM7OKjhWrHnjJ2yOp1kp4UrY';
   static const kUrl = 'https://api.themoviedb.org/3';
 
   @override
   Future<ApiResponse> get(String path, {Map<String, String>? headers}) async {
-    final res = await _client
-        .get(Uri.parse(kUrl + path), headers: headers)
-        .timeout(Duration(milliseconds: timeOutMs));
+    final res = await _client.get(Uri.parse(kUrl + path), headers: {
+      ...headers ?? {},
+      'Authorization': 'Bearer $_token'
+    }).timeout(Duration(milliseconds: timeOutMs));
 
     switch (res.statusCode) {
       case 200:

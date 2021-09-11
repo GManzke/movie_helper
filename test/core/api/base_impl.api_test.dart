@@ -25,17 +25,17 @@ main() {
 
     test('Should return success response when client with valid path is called',
         () async {
-      when(mockClient.get(uri))
+      when(mockClient.get(uri, headers: anyNamed('headers')))
           .thenAnswer((_) async => http.Response('{}', 200));
 
       final res = await baseApiImpl.get(customPath);
 
-      verify(mockClient.get(uri)).called(1);
+      verify(mockClient.get(uri, headers: anyNamed('headers'))).called(1);
       expect(res.statusCode, 200);
     });
 
     test('Should throw NotFoundException on 404 error', () async {
-      when(mockClient.get(uri))
+      when(mockClient.get(uri, headers: anyNamed('headers')))
           .thenAnswer((_) async => http.Response('{}', 404));
 
       expect(
@@ -46,7 +46,7 @@ main() {
       const customBodyError = '{message: Algo deu errado!}';
       const expectedException = GenericException(customBodyError);
 
-      when(mockClient.get(uri))
+      when(mockClient.get(uri, headers: anyNamed('headers')))
           .thenAnswer((_) async => http.Response(customBodyError, 900));
 
       expect(() => baseApiImpl.get(customPath), throwsA(expectedException));
@@ -55,8 +55,8 @@ main() {
     test('Should throw NoConnectionException on timeout', () async {
       baseApiImpl = BaseApiImpl(mockClient, timeOutMs: 0);
 
-      when(mockClient.get(uri)).thenAnswer((_) async =>
-          Future.delayed(const Duration(milliseconds: 1))
+      when(mockClient.get(uri, headers: anyNamed('headers'))).thenAnswer(
+          (_) async => Future.delayed(const Duration(milliseconds: 1))
               .then((value) => http.Response('{}', 404)));
 
       expect(

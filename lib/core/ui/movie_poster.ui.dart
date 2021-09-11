@@ -3,12 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:movie_helper/core/constants.dart';
 
 class MoviePosterUi extends StatelessWidget {
+  static const kImageBaseUrl = 'https://image.tmdb.org/t/p/w500';
   static const kPosterRatio = 0.7;
 
   const MoviePosterUi({
     Key? key,
     required this.title,
-    this.height = 500,
+    required this.height,
     this.posterPath,
   }) : super(key: key);
 
@@ -21,12 +22,12 @@ class MoviePosterUi extends StatelessWidget {
     final width = kPosterRatio * height;
 
     return ClipRRect(
-      borderRadius: BorderRadius.circular(24),
+      borderRadius: BorderRadius.circular(16),
       child: Stack(
         alignment: Alignment.bottomCenter,
         children: [
           CachedNetworkImage(
-            imageUrl: posterPath ?? '',
+            imageUrl: kImageBaseUrl + (posterPath ?? ''),
             fit: BoxFit.cover,
             height: height,
             width: width,
@@ -38,9 +39,9 @@ class MoviePosterUi extends StatelessWidget {
                 Container(
               color: Colors.grey[800],
               child: Center(
-                  child: CircularProgressIndicator(
-                      value: downloadProgress.progress)),
-            ),
+                      child: CircularProgressIndicator(
+                          value: downloadProgress.progress)),
+                ),
           ),
           Container(
               padding: EdgeInsetsDirectional.only(
