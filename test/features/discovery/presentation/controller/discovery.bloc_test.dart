@@ -6,7 +6,6 @@ import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:movie_helper/core/controller/base_bloc.event.dart';
 import 'package:movie_helper/core/failures.dart';
-import 'package:movie_helper/features/discovery/domain/entities/genre.entity.dart';
 import 'package:movie_helper/features/discovery/domain/entities/movie.entity.dart';
 import 'package:movie_helper/features/discovery/domain/usecase/get_popular_movies.usecase.dart';
 import 'package:movie_helper/features/discovery/presentation/controller/discovery.bloc.dart';
@@ -36,7 +35,7 @@ main() {
       MovieEntity(
           posterPath:
               'https://image.tmdb.org/t/p/w500/fYtHxTxlhzD4QWfEbrC1rypysSD.jpg',
-          genres: [GenreEntity(name: 'Horror', id: 1)],
+          genres: [1],
           voteAverage: 10.0,
           overview: 'Very scary movie',
           title: 'Jane Doe',
@@ -44,7 +43,7 @@ main() {
       MovieEntity(
           posterPath:
               'https://image.tmdb.org/t/p/w500/jtAI6OJIWLWiRItNSZoWjrsUtmi.jpg',
-          genres: [GenreEntity(name: 'Horror', id: 1)],
+          genres: [1],
           voteAverage: 3.0,
           overview: 'Not so scary movie',
           title: 'Halloween (2018)',

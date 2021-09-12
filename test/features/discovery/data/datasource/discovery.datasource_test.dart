@@ -1,7 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
-import 'package:movie_helper/core/api/base.api.abstract.dart';
+import 'package:movie_helper/core/datasource/api/base.api.abstract.dart';
 import 'package:movie_helper/features/discovery/data/datasource/discovery.datasource.dart';
 
 import '../json/movie_responses.dart';

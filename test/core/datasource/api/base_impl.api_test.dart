@@ -4,8 +4,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
-import 'package:movie_helper/core/api/base_impl.api.dart';
-import 'package:movie_helper/core/api/exceptions.dart';
+import 'package:movie_helper/core/datasource/api/base_impl.api.dart';
+import 'package:movie_helper/core/datasource/api/exceptions.dart';
 
 import 'base_impl.api_test.mocks.dart';
 
