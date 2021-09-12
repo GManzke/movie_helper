@@ -1,4 +1,4 @@
-import 'package:movie_helper/core/api/base.api.abstract.dart';
+import 'package:movie_helper/core/datasource/api/base.api.abstract.dart';
 
 import '../model/movie.model.dart';
 

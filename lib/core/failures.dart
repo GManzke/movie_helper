@@ -13,6 +13,7 @@ class Failure extends Equatable {
 const kNoConnectionFailure = NoConnectionFailure();
 const kNotFoundFailure = NotFoundFailure();
 const kGenericFailure = GenericFailure();
+const kCacheFailure = CacheFailure();
 
 class NotFoundFailure extends Failure {
   const NotFoundFailure()
@@ -21,6 +22,11 @@ class NotFoundFailure extends Failure {
 
 class NoConnectionFailure extends Failure {
   const NoConnectionFailure() : super(message: 'Verifique a sua conexão');
+}
+
+class CacheFailure extends Failure {
+  const CacheFailure()
+      : super(message: 'Não foi possível carregar seus filmes');
 }
 
 class GenericFailure extends Failure {

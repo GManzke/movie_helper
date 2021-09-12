@@ -3,7 +3,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:movie_helper/core/failures.dart';
-import 'package:movie_helper/features/discovery/domain/entities/genre.entity.dart';
 import 'package:movie_helper/features/discovery/domain/entities/movie.entity.dart';
 import 'package:movie_helper/features/discovery/domain/repository/discovery.repository.dart';
 import 'package:movie_helper/features/discovery/domain/usecase/get_popular_movies.usecase.dart';
@@ -24,13 +23,13 @@ main() {
     test('Should return Right with the movie List', () async {
       final movieList = [
         const MovieEntity(
-            genres: [GenreEntity(name: 'Horror', id: 1)],
+            genres: [1],
             voteAverage: 10.0,
             overview: 'Very scary movie',
             title: 'Jane Doe',
             id: 666),
         const MovieEntity(
-            genres: [GenreEntity(name: 'Horror', id: 1)],
+            genres: [1],
             voteAverage: 3.0,
             overview: 'Not so scary movie',
             title: 'Halloween (2018)',

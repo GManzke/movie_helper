@@ -1,8 +1,9 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-import 'package:movie_helper/core/api/base.api.abstract.dart';
-import 'package:movie_helper/core/api/exceptions.dart';
+
+import 'base.api.abstract.dart';
+import 'exceptions.dart';
 
 const _kTimeOutMs = 10000;
 

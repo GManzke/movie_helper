@@ -1,9 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movie_helper/app_routes.dart';
 import 'package:movie_helper/core/constants.dart';
 import 'package:movie_helper/core/controller/base_bloc.state.dart';
+import 'package:movie_helper/core/extension/context.ext.dart';
 import 'package:movie_helper/core/page/base.page.abstract.dart';
 import 'package:movie_helper/features/discovery/domain/entities/movie.entity.dart';
 import 'package:movie_helper/features/discovery/presentation/controller/discovery.bloc.dart';
@@ -17,6 +17,19 @@ class DiscoveryPage extends BasePage<DiscoveryBloc> {
 
   @override
   String get pageTitle => 'Discovery';
+
+  @override
+  List<Widget> actionButton(BuildContext ctx) => [
+        Padding(
+          padding: const EdgeInsets.only(right: kDefaultPadding),
+          child: IconButton(
+              onPressed: () => ctx.pushNamed(kFavoritesPage),
+              icon: const Icon(
+                Icons.favorite_outline_sharp,
+                size: 32,
+              )),
+        )
+      ];
 
   @override
   void listener(BuildContext context, BaseBlocState state) {}

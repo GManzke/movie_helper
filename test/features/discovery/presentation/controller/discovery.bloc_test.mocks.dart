@@ -11,6 +11,8 @@ import 'package:movie_helper/features/discovery/domain/entities/movie.entity.dar
     as _i6;
 import 'package:movie_helper/features/discovery/domain/usecase/get_popular_movies.usecase.dart'
     as _i3;
+import 'package:movie_helper/features/favorites/domain/usecase/store_favorite_movie.usecase.dart'
+    as _i7;
 
 // ignore_for_file: avoid_redundant_argument_values
 // ignore_for_file: avoid_setters_without_getters
@@ -38,7 +40,26 @@ class MockGetPopularMoviesUseCase extends _i1.Mock
                   Future<_i2.Either<_i5.Failure, List<_i6.MovieEntity>>>.value(
                       _FakeEither_0<_i5.Failure, List<_i6.MovieEntity>>()))
           as _i4.Future<_i2.Either<_i5.Failure, List<_i6.MovieEntity>>>);
+  @override
+  String toString() => super.toString();
+}
 
+/// A class which mocks [StoreFavoriteMovieUseCase].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockStoreFavoriteMovieUseCase extends _i1.Mock
+    implements _i7.StoreFavoriteMovieUseCase {
+  MockStoreFavoriteMovieUseCase() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i4.Future<_i2.Either<_i5.Failure, _i2.None<dynamic>>> call(
+          _i6.MovieEntity? param) =>
+      (super.noSuchMethod(Invocation.method(#call, [param]),
+          returnValue: Future<_i2.Either<_i5.Failure, _i2.None<dynamic>>>.value(
+              _FakeEither_0<_i5.Failure, _i2.None<dynamic>>())) as _i4
+          .Future<_i2.Either<_i5.Failure, _i2.None<dynamic>>>);
   @override
   String toString() => super.toString();
 }
