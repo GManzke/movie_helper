@@ -5,4 +5,6 @@ class BaseBlocEvent extends Equatable {
   List<Object?> get props => [];
 }
 
-class InitBlocEvent extends BaseBlocEvent {}
+class InitialBlocEvent extends BaseBlocEvent {}
+
+class ClearErrorEvent extends BaseBlocEvent {}

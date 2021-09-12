@@ -19,20 +19,23 @@ main() {
 
   group('getMostPopularMovies', () {
     test('Should return a List of Movies from API', () async {
-      when(api.get(DiscoveryDataSourceImpl.kPopularMoviesPath)).thenAnswer(
+      when(api
+          .get(DiscoveryDataSourceImpl.kPopularMoviesPath,
+              queryParams: {'page': '1'})).thenAnswer(
           (_) async => ApiResponse.success(body: popularMoviesSuccessResponse));
 
-      final res = await discoveryDataSourceImpl.getPopularMovies();
+      final res = await discoveryDataSourceImpl.getPopularMovies(page: 1);
 
-      verify(api.get(DiscoveryDataSourceImpl.kPopularMoviesPath)).called(1);
+      verify(api.get(DiscoveryDataSourceImpl.kPopularMoviesPath,
+          queryParams: {'page': '1'})).called(1);
       expect(res.isNotEmpty, isTrue);
     });
 
     test('Should throw exception', () async {
-      when(api.get(DiscoveryDataSourceImpl.kPopularMoviesPath))
-          .thenThrow(Exception());
+      when(api.get(DiscoveryDataSourceImpl.kPopularMoviesPath,
+          queryParams: {'page': '1'})).thenThrow(Exception());
 
-      expect(() => discoveryDataSourceImpl.getPopularMovies(),
+      expect(() => discoveryDataSourceImpl.getPopularMovies(page: 1),
           throwsA(isA<Exception>()));
     });
   });

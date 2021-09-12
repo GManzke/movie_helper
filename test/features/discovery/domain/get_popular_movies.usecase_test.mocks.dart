@@ -32,13 +32,15 @@ class MockDiscoveryRepository extends _i1.Mock
   }
 
   @override
-  _i4.Future<_i2.Either<_i5.Failure, List<_i6.MovieEntity>>>
-      getPopularMovies() => (super.noSuchMethod(
-              Invocation.method(#getPopularMovies, []),
+  _i4.Future<_i2.Either<_i5.Failure, List<_i6.MovieEntity>>> getPopularMovies(
+          {int? page}) =>
+      (super.noSuchMethod(
+              Invocation.method(#getPopularMovies, [], {#page: page}),
               returnValue:
                   Future<_i2.Either<_i5.Failure, List<_i6.MovieEntity>>>.value(
                       _FakeEither_0<_i5.Failure, List<_i6.MovieEntity>>()))
           as _i4.Future<_i2.Either<_i5.Failure, List<_i6.MovieEntity>>>);
+
   @override
   String toString() => super.toString();
 }

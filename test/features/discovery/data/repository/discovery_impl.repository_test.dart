@@ -42,39 +42,40 @@ main() {
       ];
       final List<MovieEntity> movieEntityList = movieModelList;
 
-      when(dataSource.getPopularMovies())
+      when(dataSource.getPopularMovies(page: 1))
           .thenAnswer((_) async => movieModelList);
 
-      final res = await discoveryRepositoryImpl.getPopularMovies();
+      final res = await discoveryRepositoryImpl.getPopularMovies(page: 1);
 
-      verify(dataSource.getPopularMovies()).called(1);
+      verify(dataSource.getPopularMovies(page: 1)).called(1);
       expect(res, equals(Right(movieEntityList)));
     });
 
     test('Should return Left with connection Failure', () async {
-      when(dataSource.getPopularMovies()).thenThrow(TimeoutException(''));
+      when(dataSource.getPopularMovies(page: 1))
+          .thenThrow(TimeoutException(''));
 
-      final res = await discoveryRepositoryImpl.getPopularMovies();
+      final res = await discoveryRepositoryImpl.getPopularMovies(page: 1);
 
-      verify(dataSource.getPopularMovies()).called(1);
+      verify(dataSource.getPopularMovies(page: 1)).called(1);
       expect(res, equals(const Left(kNoConnectionFailure)));
     });
 
     test('Should return Left with not found Failure', () async {
-      when(dataSource.getPopularMovies()).thenThrow(NotFoundException());
+      when(dataSource.getPopularMovies(page: 1)).thenThrow(NotFoundException());
 
-      final res = await discoveryRepositoryImpl.getPopularMovies();
+      final res = await discoveryRepositoryImpl.getPopularMovies(page: 1);
 
-      verify(dataSource.getPopularMovies()).called(1);
+      verify(dataSource.getPopularMovies(page: 1)).called(1);
       expect(res, equals(const Left(kNotFoundFailure)));
     });
 
     test('Should return Left with generic Failure', () async {
-      when(dataSource.getPopularMovies()).thenThrow(Exception());
+      when(dataSource.getPopularMovies(page: 1)).thenThrow(Exception());
 
-      final res = await discoveryRepositoryImpl.getPopularMovies();
+      final res = await discoveryRepositoryImpl.getPopularMovies(page: 1);
 
-      verify(dataSource.getPopularMovies()).called(1);
+      verify(dataSource.getPopularMovies(page: 1)).called(1);
       expect(res, equals(const Left(kGenericFailure)));
     });
   });

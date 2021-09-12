@@ -14,9 +14,10 @@ class DiscoveryRepositoryImpl implements DiscoveryRepository {
   DiscoveryRepositoryImpl(this._dataSource);
 
   @override
-  Future<Either<Failure, List<MovieEntity>>> getPopularMovies() async {
+  Future<Either<Failure, List<MovieEntity>>> getPopularMovies(
+      {required int page}) async {
     try {
-      final res = await _dataSource.getPopularMovies();
+      final res = await _dataSource.getPopularMovies(page: page);
       return Right(res);
     } catch (e) {
       if (e is NotFoundException) {

@@ -17,7 +17,8 @@ class ApiResponse extends Equatable {
 }
 
 abstract class BaseApi {
-  Future<ApiResponse> get(String path, {Map<String, String>? headers});
+  Future<ApiResponse> get(String path,
+      {Map<String, String>? headers, Map<String, String>? queryParams});
 
   Future<ApiResponse> post(String path,
       {Map<String, String>? headers, Map<String, dynamic>? body});

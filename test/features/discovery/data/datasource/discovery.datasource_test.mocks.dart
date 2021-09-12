@@ -27,10 +27,13 @@ class MockBaseApi extends _i1.Mock implements _i2.BaseApi {
 
   @override
   _i3.Future<_i2.ApiResponse> get(String? path,
-          {Map<String, String>? headers}) =>
-      (super.noSuchMethod(Invocation.method(#get, [path], {#headers: headers}),
+          {Map<String, String>? headers, Map<String, String>? queryParams}) =>
+      (super.noSuchMethod(
+              Invocation.method(
+                  #get, [path], {#headers: headers, #queryParams: queryParams}),
               returnValue: Future<_i2.ApiResponse>.value(_FakeApiResponse_0()))
           as _i3.Future<_i2.ApiResponse>);
+
   @override
   _i3.Future<_i2.ApiResponse> post(String? path,
           {Map<String, String>? headers, Map<String, dynamic>? body}) =>

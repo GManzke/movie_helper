@@ -21,7 +21,7 @@ main() {
 
   group('get', () {
     const customPath = '/test';
-    final uri = Uri.parse(BaseApiImpl.kUrl + customPath);
+    final uri = Uri.https(BaseApiImpl.kUrl, customPath);
 
     test('Should return success response when client with valid path is called',
         () async {

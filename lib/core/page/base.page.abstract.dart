@@ -5,6 +5,7 @@ import 'package:movie_helper/core/constants.dart';
 import 'package:movie_helper/core/controller/base_bloc.event.dart';
 import 'package:movie_helper/core/controller/base_bloc.state.dart';
 import 'package:movie_helper/core/extension/context.ext.dart';
+import 'package:movie_helper/core/ui/error_overlay.ui.dart';
 import 'package:movie_helper/di/di.dart';
 
 abstract class BasePage<T extends Bloc<BaseBlocEvent, BaseBlocState>>
@@ -35,10 +36,21 @@ abstract class BasePage<T extends Bloc<BaseBlocEvent, BaseBlocState>>
     return Scaffold(
       appBar: appBar(context),
       body: BlocProvider<T>(
-        create: (ctx) => getIt.get<T>()..add(InitBlocEvent()),
+        create: (ctx) => getIt.get<T>()..add(InitialBlocEvent()),
         child: BlocListener<T, BaseBlocState>(
           listener: listener,
-          child: SafeArea(child: layout(context)),
+          child: Stack(
+            children: [
+              SafeArea(child: layout(context)),
+              BlocBuilder<T, BaseBlocState>(
+                  builder: (ctx, state) => state is ErrorBlocOverlayState
+                      ? ErrorOverlayUi(
+                          onDismiss: () => bloc(ctx).add(ClearErrorEvent()),
+                          state: state,
+                        )
+                      : const SizedBox.shrink())
+            ],
+          ),
         ),
       ),
     );

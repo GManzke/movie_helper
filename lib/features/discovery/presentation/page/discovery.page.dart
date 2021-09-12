@@ -44,7 +44,7 @@ class DiscoveryPage extends BasePage<DiscoveryBloc> {
                 left: kDefaultPadding,
                 right: kDefaultPadding,
                 child: Text(
-                  'Por hoje é só, volte depois para mais filmes incríveis!',
+                  'Você chegou ao fim! Volte mais tarde para ver mais novidades',
                   style: Theme.of(context).textTheme.headline2,
                   textAlign: TextAlign.center,
                 ),
@@ -78,7 +78,7 @@ class DiscoveryPage extends BasePage<DiscoveryBloc> {
     required Function() onDismiss,
     required Size displaySize,
   }) =>
-      movieList
+      movieList.reversed
           .map(
             (movie) => DraggableMovieCardUi(
               key: GlobalKey(),

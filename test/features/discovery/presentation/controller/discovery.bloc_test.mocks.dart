@@ -32,9 +32,8 @@ class MockGetPopularMoviesUseCase extends _i1.Mock
   }
 
   @override
-  _i4.Future<_i2.Either<_i5.Failure, List<_i6.MovieEntity>>> call(
-          [_i2.None<dynamic>? _]) =>
-      (super.noSuchMethod(Invocation.method(#call, [_]),
+  _i4.Future<_i2.Either<_i5.Failure, List<_i6.MovieEntity>>> call(int? page) =>
+      (super.noSuchMethod(Invocation.method(#call, [page]),
               returnValue:
                   Future<_i2.Either<_i5.Failure, List<_i6.MovieEntity>>>.value(
                       _FakeEither_0<_i5.Failure, List<_i6.MovieEntity>>()))

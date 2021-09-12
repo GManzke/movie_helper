@@ -37,28 +37,28 @@ main() {
             id: 666)
       ];
 
-      when(repository.getPopularMovies())
+      when(repository.getPopularMovies(page: 1))
           .thenAnswer((_) async => Right(movieList));
 
-      final res = await getPopularMoviesUseCase();
+      final res = await getPopularMoviesUseCase(1);
 
       expect(res, equals(Right(movieList)));
     });
 
     test('Should return Left with Generic Failure', () async {
-      when(repository.getPopularMovies())
+      when(repository.getPopularMovies(page: 1))
           .thenAnswer((_) async => const Left(kGenericFailure));
 
-      final res = await getPopularMoviesUseCase();
+      final res = await getPopularMoviesUseCase(1);
 
       expect(res, equals(const Left(kGenericFailure)));
     });
 
     test('Should return Left with Not Found Failure', () async {
-      when(repository.getPopularMovies())
+      when(repository.getPopularMovies(page: 1))
           .thenAnswer((_) async => const Left(kNotFoundFailure));
 
-      final res = await getPopularMoviesUseCase();
+      final res = await getPopularMoviesUseCase(1);
 
       expect(res, equals(const Left(kNotFoundFailure)));
     });

@@ -28,10 +28,12 @@ class MockDiscoveryDataSource extends _i1.Mock
   }
 
   @override
-  _i3.Future<List<_i4.MovieModel>> getPopularMovies() => (super.noSuchMethod(
-          Invocation.method(#getPopularMovies, []),
-          returnValue: Future<List<_i4.MovieModel>>.value(<_i4.MovieModel>[]))
+  _i3.Future<List<_i4.MovieModel>> getPopularMovies({int? page}) => (super
+          .noSuchMethod(Invocation.method(#getPopularMovies, [], {#page: page}),
+              returnValue:
+                  Future<List<_i4.MovieModel>>.value(<_i4.MovieModel>[]))
       as _i3.Future<List<_i4.MovieModel>>);
+
   @override
   String toString() => super.toString();
 }
