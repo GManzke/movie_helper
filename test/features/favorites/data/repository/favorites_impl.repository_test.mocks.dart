@@ -32,13 +32,11 @@ class MockFavoritesDataSource extends _i1.Mock
           Invocation.method(#fetchFavoriteMovies, []),
           returnValue: Future<List<_i4.MovieModel>>.value(<_i4.MovieModel>[]))
       as _i3.Future<List<_i4.MovieModel>>);
-
   @override
   _i3.Future<void> storeFavoriteMovie(_i4.MovieModel? movie) =>
       (super.noSuchMethod(Invocation.method(#storeFavoriteMovie, [movie]),
           returnValue: Future<void>.value(),
           returnValueForMissingStub: Future<void>.value()) as _i3.Future<void>);
-
   @override
   String toString() => super.toString();
 }

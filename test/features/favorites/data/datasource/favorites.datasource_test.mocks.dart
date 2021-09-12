@@ -31,25 +31,21 @@ class MockStorageAdapter extends _i1.Mock implements _i3.StorageAdapter {
           Invocation.method(#load, [tag]),
           returnValue: Future<Map<String, dynamic>>.value(<String, dynamic>{}))
       as _i4.Future<Map<String, dynamic>>);
-
   @override
   _i4.Future<void> store(String? dataJson, String? tag) =>
       (super.noSuchMethod(Invocation.method(#store, [dataJson, tag]),
           returnValue: Future<void>.value(),
           returnValueForMissingStub: Future<void>.value()) as _i4.Future<void>);
-
   @override
   _i4.Future<void> delete(String? tag) =>
       (super.noSuchMethod(Invocation.method(#delete, [tag]),
           returnValue: Future<void>.value(),
           returnValueForMissingStub: Future<void>.value()) as _i4.Future<void>);
-
   @override
   _i4.Future<_i2.File> openFile(String? tag) =>
       (super.noSuchMethod(Invocation.method(#openFile, [tag]),
               returnValue: Future<_i2.File>.value(_FakeFile_0()))
           as _i4.Future<_i2.File>);
-
   @override
   String toString() => super.toString();
 }

@@ -60,7 +60,7 @@ class DiscoveryPage extends BasePage<DiscoveryBloc> {
                       onDismissPressed: () => onDismissPressed(movieList.last)),
                 ),
               Positioned.fill(
-                bottom: displaySize.height * .15,
+                bottom: displaySize.height * .18,
                 child: Stack(children: movieList),
               ),
             ],
