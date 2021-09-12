@@ -24,6 +24,7 @@ class FavoritesRepositoryImpl extends FavoritesRepository {
     try {
       await _dataSource.storeFavoriteMovie(MovieModel(
           voteAverage: movie.voteAverage,
+          posterPath: movie.posterPath,
           overview: movie.overview,
           genres: movie.genres,
           title: movie.title,

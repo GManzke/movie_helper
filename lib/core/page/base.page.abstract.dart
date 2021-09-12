@@ -12,11 +12,13 @@ abstract class BasePage<T extends Bloc<BaseBlocEvent, BaseBlocState>>
     extends StatelessWidget {
   const BasePage({Key? key}) : super(key: key);
 
-  T bloc(ctx) => BlocProvider.of(ctx);
+  T bloc(BuildContext ctx) => BlocProvider.of(ctx);
 
   bool get canPop => false;
 
   String get pageTitle => '';
+
+  List<Widget> actionButton(BuildContext ctx) => [];
 
   AppBar appBar(BuildContext context) => AppBar(
         title: Text(pageTitle, style: Theme.of(context).textTheme.headline1),
@@ -25,6 +27,7 @@ abstract class BasePage<T extends Bloc<BaseBlocEvent, BaseBlocState>>
                 onPressed: context.pop,
                 icon: const Icon(Icons.arrow_back_ios_sharp))
             : null,
+        actions: actionButton(context),
         automaticallyImplyLeading: false,
         titleSpacing: kDefaultPadding,
         toolbarHeight: MediaQuery.of(context).size.height * 0.1,

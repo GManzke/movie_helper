@@ -7,7 +7,7 @@ class StorageAdapter {
   Future<Map<String, dynamic>> load(String tag) async {
     final file = await openFile(tag);
     final content = await file.readAsString();
-    return jsonDecode(content);
+    return content.isEmpty ? {} : jsonDecode(content);
   }
 
   Future<void> store(String dataJson, String tag) async {

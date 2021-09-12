@@ -20,7 +20,7 @@ class App extends StatelessWidget {
       theme: ThemeData.dark().copyWith(
           scaffoldBackgroundColor: Colors.black,
           appBarTheme: const AppBarTheme(backgroundColor: Colors.black),
-          iconTheme: const IconThemeData(color: Colors.redAccent, size: 58),
+          iconTheme: const IconThemeData(color: Colors.redAccent, size: 54),
           elevatedButtonTheme: ElevatedButtonThemeData(
               style: ElevatedButton.styleFrom(
                   padding: const EdgeInsets.all(8),

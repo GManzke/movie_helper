@@ -40,7 +40,6 @@ class MockGetPopularMoviesUseCase extends _i1.Mock
                   Future<_i2.Either<_i5.Failure, List<_i6.MovieEntity>>>.value(
                       _FakeEither_0<_i5.Failure, List<_i6.MovieEntity>>()))
           as _i4.Future<_i2.Either<_i5.Failure, List<_i6.MovieEntity>>>);
-
   @override
   String toString() => super.toString();
 }
@@ -61,7 +60,6 @@ class MockStoreFavoriteMovieUseCase extends _i1.Mock
           returnValue: Future<_i2.Either<_i5.Failure, _i2.None<dynamic>>>.value(
               _FakeEither_0<_i5.Failure, _i2.None<dynamic>>())) as _i4
           .Future<_i2.Either<_i5.Failure, _i2.None<dynamic>>>);
-
   @override
   String toString() => super.toString();
 }

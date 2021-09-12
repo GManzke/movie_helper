@@ -1,6 +1,5 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:dartz/dartz.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
@@ -24,14 +23,6 @@ main() {
     getPopularMoviesUseCase = MockGetPopularMoviesUseCase();
     storeFavoriteMovieUseCase = MockStoreFavoriteMovieUseCase();
   });
-
-  DiscoveryState getDiscoveryState(Bloc bloc) {
-    if (bloc.state is DiscoveryState) {
-      return bloc.state;
-    } else {
-      return DiscoveryState(const []);
-    }
-  }
 
   group('DiscoveryBloc', () {
     const movieList = [
@@ -109,10 +100,8 @@ main() {
       seed: () => DiscoveryState(movieList),
       act: (DiscoveryBloc bloc) => bloc.add(DismissMovieDiscoveryEvent()),
       verify: (DiscoveryBloc bloc) {
-        final state = getDiscoveryState(bloc);
-
-        expect(state.movieList.length, 1);
-        expect(state.movieList.first.id, 321);
+        expect(bloc.state.movieList.length, 1);
+        expect(bloc.state.movieList.first.id, 321);
       },
     );
 
@@ -128,8 +117,7 @@ main() {
         bloc.add(FavoriteMovieDiscoveryEvent(movieList.last));
       },
       verify: (DiscoveryBloc bloc) {
-        final state = getDiscoveryState(bloc);
-        expect(state.movieList.first.id, 321);
+        expect(bloc.state.movieList.first.id, 321);
       },
     );
   });

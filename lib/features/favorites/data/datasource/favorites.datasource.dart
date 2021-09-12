@@ -27,11 +27,12 @@ class FavoritesDataSourceImpl extends FavoritesDataSource {
   @override
   Future<void> storeFavoriteMovie(MovieModel movie) async {
     final movieListJson = await _storageAdapter.load(kMovieListStorageTag);
-    final List<MovieModel> movieModelList =
-        List.from(movieListJson['favorites'])
+    List<MovieModel> movieModelList = movieListJson.isEmpty
+        ? [movie]
+        : (List.from(movieListJson['favorites'])
             .map((x) => MovieModel.fromJson(x))
             .toList()
-          ..add(movie);
+          ..add(movie));
 
     _storageAdapter.store(
         jsonEncode({'favorites': movieModelList}), kMovieListStorageTag);
