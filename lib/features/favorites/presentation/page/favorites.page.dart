@@ -33,9 +33,8 @@ class FavoritesPage extends BasePage<FavoritesBloc> {
               padding: const EdgeInsets.all(24.0),
               child: Row(
                 children: [
-                  MoviePosterUi(
+                  MoviePosterUi.posterOnly(
                     posterPath: state.movieList[index].posterPath,
-                    title: '',
                     height: deviceSize.height * 0.32,
                   ),
                   const SizedBox(width: 16),

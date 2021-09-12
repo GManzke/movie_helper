@@ -68,6 +68,7 @@ class _DraggableMovieCardUiState extends State<DraggableMovieCardUi>
       child: Align(
         alignment: _dragAlignment,
         child: MoviePosterUi(
+          voteAverage: widget.movie.voteAverage,
           posterPath: widget.movie.posterPath,
           title: widget.movie.title,
           height: widget.displaySize.width * 1.15,

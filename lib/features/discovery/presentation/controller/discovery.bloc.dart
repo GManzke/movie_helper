@@ -28,17 +28,12 @@ class DiscoveryBloc extends Bloc<BaseBlocEvent, DiscoveryState> {
       yield DiscoveryLoadingState(state.movieList);
       yield await _getPopularMovies(state);
     } else if (event is DismissMovieDiscoveryEvent) {
-      yield* _handleDismissMovieEvent(event, state);
+      yield* _handleCardDismiss(event, state);
     } else if (event is FavoriteMovieDiscoveryEvent) {
       yield* _handleFavoriteMovieEvent(event, state);
     } else {
       yield initialState;
     }
-  }
-
-  Stream<DiscoveryState> _handleDismissMovieEvent(
-      DismissMovieDiscoveryEvent event, DiscoveryState state) async* {
-    yield* _handleCardDismiss(event, state);
   }
 
   Stream<DiscoveryState> _handleFavoriteMovieEvent(
@@ -49,12 +44,14 @@ class DiscoveryBloc extends Bloc<BaseBlocEvent, DiscoveryState> {
 
   Stream<DiscoveryState> _handleCardDismiss(
       BaseBlocEvent event, DiscoveryState state) async* {
-    yield DiscoveryState(state.movieList.isNotEmpty
+    final newState = DiscoveryState(state.movieList.isNotEmpty
         ? (List.from(state.movieList)..removeAt(0))
         : const []);
 
+    yield newState;
+
     if (state.movieList.length == kMinMovieCount) {
-      yield await _getPopularMovies(state);
+      yield await _getPopularMovies(newState);
     }
   }
 

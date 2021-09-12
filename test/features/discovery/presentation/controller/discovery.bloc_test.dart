@@ -89,7 +89,7 @@ main() {
         },
         verify: (DiscoveryBloc bloc) {
           verify(getPopularMoviesUseCase(1)).called(1);
-          expect(bloc.state.movieList.length, 6);
+          expect(bloc.state.movieList.length, 5);
         });
 
     blocTest(

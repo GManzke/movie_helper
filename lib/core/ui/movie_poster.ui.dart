@@ -8,12 +8,22 @@ class MoviePosterUi extends StatelessWidget {
 
   const MoviePosterUi({
     Key? key,
-    required this.title,
+    required this.voteAverage,
     required this.height,
+    required this.title,
     this.posterPath,
   }) : super(key: key);
 
+  const MoviePosterUi.posterOnly({
+    Key? key,
+    required this.height,
+    this.posterPath,
+  })  : title = '',
+        voteAverage = null,
+        super(key: key);
+
   final String? posterPath;
+  final double? voteAverage;
   final double height;
   final String title;
 
@@ -39,27 +49,41 @@ class MoviePosterUi extends StatelessWidget {
                 Container(
               color: Colors.grey[800],
               child: Center(
-                      child: CircularProgressIndicator(
-                          value: downloadProgress.progress)),
-                ),
+                  child: CircularProgressIndicator(
+                      value: downloadProgress.progress)),
+            ),
           ),
-          Container(
-              padding: EdgeInsetsDirectional.only(
-                  bottom: kDefaultPadding, top: height / 2),
-              width: width,
-              decoration: const BoxDecoration(
-                gradient: LinearGradient(
-                  colors: [Colors.transparent, Colors.black87],
-                  end: Alignment.bottomCenter,
-                  begin: Alignment.topCenter,
-                  stops: [0, 1],
+          Positioned.fill(
+            child: Container(
+                padding: EdgeInsetsDirectional.only(
+                    bottom: kDefaultPadding, top: height / 2),
+                width: width,
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [Colors.transparent, Colors.black87],
+                    end: Alignment.bottomCenter,
+                    begin: Alignment.topCenter,
+                    stops: [0, 1],
+                  ),
                 ),
-              ),
-              child: Text(
-                title,
-                style: Theme.of(context).textTheme.headline2,
-                textAlign: TextAlign.center,
-              ))
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    if (title.isNotEmpty)
+                      Text(
+                        title,
+                        style: Theme.of(context).textTheme.headline2,
+                        textAlign: TextAlign.center,
+                      ),
+                    if (voteAverage != null)
+                      Text(
+                        'Nota: $voteAverage',
+                        style: Theme.of(context).textTheme.headline3,
+                        textAlign: TextAlign.center,
+                      ),
+                  ],
+                )),
+          )
         ],
       ),
     );
